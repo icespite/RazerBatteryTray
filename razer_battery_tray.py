@@ -61,8 +61,8 @@ if device is None:
     sys.exit(1)
 
 
-def refrash():
-    print("Refrashing")
+def refresh():
+    print("refreshing")
     a = openrazer.client.DeviceManager()
     global device
     for dev in a.devices:  # print all bat devices
@@ -113,7 +113,7 @@ def setup_icon(icon):
         except Exception as e:
             print("Error:", e)
             sleep(UPDATE_INTERVAL_IN_SECS)
-            refrash()
+            refresh()
 
 
 def on_monitor(icon):
@@ -130,7 +130,7 @@ tray_icon = Icon(
             lambda text: device_name,
             on_monitor,
         ),
-        MenuItem(f"refrash", lambda: refrash()),
+        MenuItem(f"Refresh", lambda: refresh()),
         MenuItem(
             f"Exit",
             lambda: os._exit(0),
